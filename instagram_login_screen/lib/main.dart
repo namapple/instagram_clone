@@ -9,4 +9,4 @@ import 'screens/login/login_screen.dart';
 // - Button -> reuse code
 // - Row
 // - Button Text -> navigation between Login & SignUp
-void main() => runApp(const SignupScreen());
+void main() => runApp(const LoginScreen());

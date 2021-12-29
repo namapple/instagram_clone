@@ -51,7 +51,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 25),
                 buildButton(text: 'Sign Up'),
                 const SizedBox(height: 25),
-                const SizedBox(height: 25),
+                const Spacer(),
                 buildSignUpText(),
               ],
             ),

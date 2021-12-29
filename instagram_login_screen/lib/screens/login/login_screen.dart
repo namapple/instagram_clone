@@ -8,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 // Text Field Template
-Widget buildTextField({required String text, bool hide = false }) {
+Widget buildTextField({required String text, bool hide = false}) {
   return Container(
     alignment: Alignment.centerLeft,
     decoration: BoxDecoration(
@@ -40,6 +40,8 @@ Widget buildTextField({required String text, bool hide = false }) {
 }
 
 Widget buildButton({required String text}) {
+  // TODO: full width
+
   return ElevatedButton(
     child: Text(
       text,
@@ -61,6 +63,7 @@ Widget buildButton({required String text}) {
 }
 
 Widget buildSignUpText() {
+  // TODO: add flexible - test on mobile
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.end,
@@ -103,13 +106,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-          child: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 30,
-              vertical: 120,
+              vertical: 20,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 const Text(
                   'Instagram',
@@ -119,13 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 50),
+                // TODO: write common widget
                 buildTextField(text: 'Email'),
-                const SizedBox(height: 25),
                 buildTextField(text: 'Password', hide: true),
-                const SizedBox(height: 25),
                 buildButton(text: 'Log In'),
-                const SizedBox(height: 25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 25),
+                // const Spacer(),
                 buildSignUpText(),
               ],
             ),
