@@ -12,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    // TODO: (namdd) transfer declare material app to main.dart
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
