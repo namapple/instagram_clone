@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_login_screen/screens/login/login_screen.dart';
+import 'package:instagram_login_screen/commons/common_widgets.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -27,33 +27,43 @@ class _SignupScreenState extends State<SignupScreen> {
               ],
             ),
           ),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30,
-              vertical: 120,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+              left: 30,
+              right: 30,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Icon(
-                  Icons.add_a_photo_outlined,
-                  size: 120,
-                  color: Colors.white70,
-                ),
-                const SizedBox(height: 50),
-                buildTextField(text: 'Email'),
-                const SizedBox(height: 25),
-                buildTextField(text: 'Password', hide: true),
-                const SizedBox(height: 25),
-                buildTextField(text: 'Fullname'),
-                const SizedBox(height: 25),
-                buildTextField(text: 'Username'),
-                const SizedBox(height: 25),
-                buildButton(text: 'Sign Up'),
-                const SizedBox(height: 25),
-                const Spacer(),
-                buildSignUpText(),
-              ],
+            child: SingleChildScrollView(
+              reverse: true,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: [
+                      const Icon(
+                        Icons.add_a_photo_outlined,
+                        size: 120,
+                        color: Colors.white70,
+                      ),
+                      const SizedBox(height: 30),
+                      buildTextField(text: 'Email'),
+                      const SizedBox(height: 20),
+                      buildTextField(text: 'Password', hide: true),
+                      const SizedBox(height: 20),
+                      buildTextField(text: 'Confirm Password', hide: true),
+                      const SizedBox(height: 20),
+                      buildTextField(text: 'Fullname'),
+                      const SizedBox(height: 20),
+                      buildTextField(text: 'Username'),
+                      const SizedBox(height: 20),
+                      buildButton(text: 'Sign Up'),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+                  buildSignUpText(),
+                ],
+              ),
             ),
           ),
         ),
