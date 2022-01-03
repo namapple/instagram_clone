@@ -65,3 +65,27 @@ mixin Utils {
     );
   }
 }
+
+class CommonTextField extends StatelessWidget {
+  const CommonTextField({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    this.validator,
+  }) : super(key: key);
+
+  final TextEditingController controller;
+  final String hintText;
+  final String? Function(String?)? validator;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      style: const TextStyle(color: Colors.white60, fontSize: 20),
+      controller: controller,
+      keyboardType: TextInputType.emailAddress,
+      decoration: buildInputDecoration(hintText),
+      validator: validator,
+    );
+  }
+}

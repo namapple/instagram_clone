@@ -52,23 +52,38 @@ class _NewLoginScreenState extends State<NewLoginScreen> with Utils {
                     Padding(
                       padding:
                           const EdgeInsets.only(bottom: 15, left: 5, right: 5),
-                      child: TextFormField(
-                        style: const TextStyle(
-                            color: Colors.white60, fontSize: 20),
+                      // child: TextFormField(
+                      //   style: const TextStyle(
+                      //       color: Colors.white60, fontSize: 20),
+                      //   controller: _emailController,
+                      //   keyboardType: TextInputType.emailAddress,
+                      //   decoration: buildInputDecoration("Email"),
+                      //   validator: (value) {
+                      //     if (value == null || value.isEmpty) {
+                      //       return 'Please enter your email address';
+                      //     }
+                      //     if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                      //       return 'Please enter a valid email address';
+                      //     }
+                      //     return null;
+                      //   },
+                      //   onSaved: (value) {
+                      //     _email = value;
+                      //   },
+                      // ),
+                      child: CommonTextField(
+                        hintText: 'Email',
                         controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: buildInputDecoration("Email"),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your email address';
                           }
+
                           if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
                             return 'Please enter a valid email address';
                           }
+                          
                           return null;
-                        },
-                        onSaved: (value) {
-                          _email = value;
                         },
                       ),
                     ),

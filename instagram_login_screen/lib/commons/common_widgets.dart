@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
 // Build text field
 Widget buildTextField({required String text, bool hide = false}) {
   return Container(
     alignment: Alignment.centerLeft,
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white10,
-      borderRadius: BorderRadius.circular(10),
     ),
     height: 55,
     child: Padding(
@@ -59,31 +57,33 @@ Widget buildButton({required String text}) {
 }
 
 // Build bottom text
-Widget buildSignUpText() {
+Widget buildSignUpText(
+  BuildContext context,
+  void Function() onpressed,
+) {
+  const textSignUp = Text(
+    ' Log In',
+    style: TextStyle(
+      color: Colors.white70,
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.end,
-    children: const <Widget>[
-      Flexible(
-        flex: 3,
-        child: Text(
-          'Don\'t have an account?',
-          style: TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
+    children: <Widget>[
+      const Text(
+        'Already have an account?',
+        style: TextStyle(
+          color: Colors.white70,
+          fontSize: 16,
         ),
       ),
-      Flexible(
-        flex: 2,
-        child: Text(
-          ' Sign Up',
-          style: TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      GestureDetector(
+        onTap: onpressed,
+        child: textSignUp,
       ),
     ],
   );
