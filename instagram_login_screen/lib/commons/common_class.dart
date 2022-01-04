@@ -58,25 +58,21 @@ Widget forgotComponent() {
   );
 }
 
-mixin Utils {
-  Future<void> push(BuildContext context, Widget destination) async {
-    Navigator.of(context).push<dynamic>(
-      MaterialPageRoute<dynamic>(builder: (context) => destination),
-    );
-  }
-}
-
 class CommonTextField extends StatelessWidget {
   const CommonTextField({
     Key? key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.validator,
+    this.hideText = false,
+    this.onSaved,
   }) : super(key: key);
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String hintText;
   final String? Function(String?)? validator;
+  final bool hideText;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +82,86 @@ class CommonTextField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       decoration: buildInputDecoration(hintText),
       validator: validator,
+      obscureText: hideText,
+      onSaved: onSaved,
+    );
+  }
+}
+
+class BuildButton extends StatelessWidget {
+  const BuildButton({
+    Key? key,
+    required this.textButton,
+    required this.onPress,
+  }) : super(key: key);
+
+  final String textButton;
+  final void Function() onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(
+        textButton,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 23,
+        ),
+      ),
+      onPressed: onPress,
+      style: ElevatedButton.styleFrom(
+        primary: Colors.lightBlue,
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+}
+
+class BuildBottomText extends StatelessWidget {
+  const BuildBottomText({
+    Key? key,
+    required this.questionText,
+    required this.actionText,
+    required this.onTap,
+  }) : super(key: key);
+
+  final String questionText;
+  final String actionText;
+  final void Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Flexible(
+          flex: 3,
+          child: Text(
+            questionText,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
+            ),
+          ),
+        ),
+        Flexible(
+          flex: 2,
+          child: GestureDetector(
+            onTap: onTap,
+            child: Text(
+              ' $actionText',
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

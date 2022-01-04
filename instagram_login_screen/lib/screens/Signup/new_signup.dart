@@ -16,7 +16,10 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
   String? _confirmPassword;
   String? _fullName;
   String? _userName;
-  Future pickImage() async {
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+
+  Future<void> pickImage() async {
     await ImagePicker().pickImage(source: ImageSource.gallery);
   }
 
@@ -34,190 +37,147 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
           ),
           child: Form(
             key: _formKey,
-            child: SingleChildScrollView(
-              reverse: true,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.add_a_photo_outlined),
-                        color: Colors.white60,
-                        iconSize: 100,
-                        onPressed: () => pickImage(),
-                      ),
-                      const SizedBox(height: 25),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: TextFormField(
-                          style: const TextStyle(
-                              color: Colors.white60, fontSize: 20),
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: buildInputDecoration("Email"),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This field is required';
-                            }
-                            if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                              return 'Please enter a valid email address';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _email = value;
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: TextFormField(
-                          obscureText: true,
-                          style: const TextStyle(
-                              color: Colors.white60, fontSize: 20),
-                          decoration: buildInputDecoration("Password"),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This field is required';
-                            }
-                            if (value.length < 8) {
-                              return 'Password must be at least 8 characters in length';
-                            }
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.add_a_photo_outlined),
+                      color: Colors.white60,
+                      iconSize: 100,
+                      onPressed: () => pickImage(),
+                    ),
+                    const SizedBox(height: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CommonTextField(
+                        hintText: 'Email',
+                        controller: _emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required';
+                          }
 
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _password = value;
-                          },
-                        ),
+                          if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                            return 'Please enter a valid email address';
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _email = value;
+                        },
                       ),
-                      const SizedBox(height: 15),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: TextFormField(
-                          obscureText: true,
-                          style: const TextStyle(
-                              color: Colors.white60, fontSize: 20),
-                          decoration: buildInputDecoration("Confirm Password"),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This field is required';
-                            }
-                            if (value != _password) {
-                              return 'Confimation password does not match the entered';
-                            }
-                          },
-                          onSaved: (value) {
-                            _confirmPassword = value;
-                          },
-                        ),
+                    ),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CommonTextField(
+                        hideText: true,
+                        hintText: 'Password',
+                        controller: _passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required';
+                          }
+
+                          if (value.length < 8) {
+                            return 'Password must be at least 8 characters in length';
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _password = value;
+                        },
                       ),
-                      const SizedBox(height: 15),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: TextFormField(
-                          style: const TextStyle(
-                              color: Colors.white60, fontSize: 20),
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: buildInputDecoration("Fullname"),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This field is required';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _fullName = value;
-                          },
-                        ),
+                    ),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CommonTextField(
+                        hideText: true,
+                        hintText: 'Confirm Password',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required';
+                          }
+
+                          if (value != _passwordController.text) {
+                            return 'Confimation password does not match the entered';
+                          }
+                        },
+                        onSaved: (value) {
+                          _confirmPassword = value;
+                        },
                       ),
-                      const SizedBox(height: 15),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: TextFormField(
-                          style: const TextStyle(
-                              color: Colors.white60, fontSize: 20),
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: buildInputDecoration("Username"),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'This field is required';
-                            }
-                            if (value.length < 4) {
-                              return 'Username must be at least 4 characters in length';
-                            }
-                            return null;
-                          },
-                          onSaved: (value) {
-                            _userName = value;
-                          },
-                        ),
+                    ),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CommonTextField(
+                        hintText: 'Fullname',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required';
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _fullName = value;
+                        },
                       ),
-                      const SizedBox(height: 15),
-                      SizedBox(
-                        height: 50,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          child: const Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 23,
-                            ),
-                          ),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Everything looks good')),
-                              );
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.lightBlue,
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
+                    ),
+                    const SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CommonTextField(
+                        hintText: 'Username',
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required';
+                          }
+
+                          if (value.length < 4) {
+                            return 'Username must be at least 4 characters in length';
+                          }
+
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _userName = value;
+                        },
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      const Flexible(
-                        flex: 3,
-                        child: Text(
-                          'Already have an account',
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 16,
-                          ),
-                        ),
+                    ),
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      height: 50,
+                      width: double.infinity,
+                      child: BuildButton(
+                        textButton: 'Sign Up',
+                        onPress: () {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  duration: Duration(seconds: 2),
+                                  content: Text('Everything looks good')),
+                            );
+                          }
+                        },
                       ),
-                      Flexible(
-                        flex: 2,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            ' Log In',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                BuildBottomText(
+                  questionText: 'Already have an account?',
+                  actionText: 'Log In',
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
             ),
           ),
         ),

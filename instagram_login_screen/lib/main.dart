@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_login_screen/bottom_nav.dart';
 import 'package:instagram_login_screen/screens/login/new_login.dart';
 
-// - Background gradient -> reuse code
-// - TextField -> reuse code
-// - Image display from assets
-// - Image Picker
-// - Button -> reuse code
-// - Row
-// - Button Text -> navigation between Login & SignUp
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -21,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const NewLoginScreen(),
+      home: const BottomNav(),
     );
   }
 }
