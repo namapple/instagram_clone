@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_login_screen/commons/common_class.dart';
-import 'package:instagram_login_screen/screens/signup/new_signup.dart';
+import 'package:instagram_login_screen/screens/signup/signup_screen.dart';
 import 'package:instagram_login_screen/utils/utils.dart';
 
 import '../../app_assets.dart';
@@ -80,7 +80,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> with Utils {
                           }
 
                           if (value.length < 8) {
-                            return 'Password must be at least 8 characters in length';
+                            return 'Password must be at least 8 characters';
                           }
 
                           return null;
@@ -113,7 +113,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> with Utils {
                   actionText: 'Sign Up',
                   onTap: () => push(
                     context,
-                    const NewSignUpScreen(), // change to HomeScreen
+                    const SignUpScreen(), // change to HomeScreen
                   ),
                 ),
               ],

@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_login_screen/commons/common_class.dart';
 
-class NewSignUpScreen extends StatefulWidget {
-  const NewSignUpScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<NewSignUpScreen> createState() => _NewSignUpScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _NewSignUpScreenState extends State<NewSignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
-  String? _email;
-  String? _password;
-  String? _confirmPassword;
-  String? _fullName;
-  String? _userName;
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
 
   Future<void> pickImage() async {
     await ImagePicker().pickImage(source: ImageSource.gallery);
+  }
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
+    super.dispose();
   }
 
   @override
@@ -46,7 +48,7 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                       icon: const Icon(Icons.add_a_photo_outlined),
                       color: Colors.white60,
                       iconSize: 100,
-                      onPressed: () => pickImage(),
+                      onPressed: pickImage,
                     ),
                     const SizedBox(height: 25),
                     Padding(
@@ -65,9 +67,6 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
 
                           return null;
                         },
-                        onSaved: (value) {
-                          _email = value;
-                        },
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -83,13 +82,10 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                           }
 
                           if (value.length < 8) {
-                            return 'Password must be at least 8 characters in length';
+                            return 'Password must be at least 8 characters';
                           }
 
                           return null;
-                        },
-                        onSaved: (value) {
-                          _password = value;
                         },
                       ),
                     ),
@@ -105,11 +101,8 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                           }
 
                           if (value != _passwordController.text) {
-                            return 'Confimation password does not match the entered';
+                            return 'Confimation password does not match';
                           }
-                        },
-                        onSaved: (value) {
-                          _confirmPassword = value;
                         },
                       ),
                     ),
@@ -125,9 +118,6 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
 
                           return null;
                         },
-                        onSaved: (value) {
-                          _fullName = value;
-                        },
                       ),
                     ),
                     const SizedBox(height: 15),
@@ -141,13 +131,10 @@ class _NewSignUpScreenState extends State<NewSignUpScreen> {
                           }
 
                           if (value.length < 4) {
-                            return 'Username must be at least 4 characters in length';
+                            return 'Username must be at least 4 characters';
                           }
 
                           return null;
-                        },
-                        onSaved: (value) {
-                          _userName = value;
                         },
                       ),
                     ),

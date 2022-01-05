@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_login_screen/bottom_nav.dart';
-import 'package:instagram_login_screen/screens/login/new_login.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Instagram',
+      // TODO(me): Make theme
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

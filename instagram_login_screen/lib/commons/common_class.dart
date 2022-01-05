@@ -101,18 +101,18 @@ class BuildButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(
-        textButton,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 23,
-        ),
-      ),
       onPressed: onPress,
       style: ElevatedButton.styleFrom(
         primary: Colors.lightBlue,
         textStyle: const TextStyle(
           fontWeight: FontWeight.w500,
+        ),
+      ),
+      child: Text(
+        textButton,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 23,
         ),
       ),
     );
