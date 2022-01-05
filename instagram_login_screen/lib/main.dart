@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import 'screens/Signup/signup_screen.dart';
-import 'screens/login/login_screen.dart';
+import 'package:instagram_login_screen/bottom_nav.dart';
+import 'package:instagram_login_screen/screens/login/new_login.dart';
 
-// - Background gradient -> reuse code
-// - TextField -> reuse code
-// - Image display from assets
-// - Image Picker
-// - Button -> reuse code
-// - Row
-// - Button Text -> navigation between Login & SignUp
-void main() => runApp(const LoginScreen());
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Instagram',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const BottomNav(),
+    );
+  }
+}
