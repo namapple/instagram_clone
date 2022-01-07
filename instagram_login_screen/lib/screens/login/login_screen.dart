@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_login_screen/commons/common_class.dart';
 import 'package:instagram_login_screen/screens/signup/signup_screen.dart';
+import 'package:instagram_login_screen/utils/common_class.dart';
 import 'package:instagram_login_screen/utils/utils.dart';
 
-import '../../app_assets.dart';
+import '../../utils/app_assets.dart';
 
 class NewLoginScreen extends StatefulWidget {
   const NewLoginScreen({Key? key}) : super(key: key);
