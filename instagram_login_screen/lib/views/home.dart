@@ -75,6 +75,11 @@ class Home extends StatelessWidget {
                   return FeedWidget(feed: feed);
                 },
               ),
+              const Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ),
+              ),
             ],
           ),
         ),
