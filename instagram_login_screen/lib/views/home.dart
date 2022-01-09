@@ -43,45 +43,43 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 2,
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 15),
-              Container(
-                width: double.infinity,
-                height: 100,
-                child: ListView.builder(
-                  itemCount: storyList.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    var stories = storyList[index];
-                    if (index == 0) {
-                      return const UserStoriesWidget();
-                    } else {
-                      return StoriesWidget(stories: stories);
-                    }
-                  },
-                ),
-              ),
-              ListView.builder(
-                itemCount: dummyFeed.length,
-                scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 15),
+            SizedBox(
+              width: double.infinity,
+              height: 100,
+              child: ListView.builder(
+                itemCount: storyList.length,
+                scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                physics: const ScrollPhysics(),
                 itemBuilder: (context, index) {
-                  var feed = dummyFeed[index];
-                  return FeedWidget(feed: feed);
+                  final stories = storyList[index];
+                  if (index == 0) {
+                    return const UserStoriesWidget();
+                  } else {
+                    return StoriesWidget(stories: stories);
+                  }
                 },
               ),
-              const Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
+            ),
+            ListView.builder(
+              itemCount: dummyFeed.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              itemBuilder: (context, index) {
+                final feed = dummyFeed[index];
+                return FeedWidget(feed: feed);
+              },
+            ),
+            const Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

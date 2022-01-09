@@ -13,7 +13,7 @@ class FeedWidget extends StatelessWidget {
   final Feed feed;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
