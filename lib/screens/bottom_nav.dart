@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_login_screen/models/bottom_nav_model.dart';
-import 'package:instagram_login_screen/views/browse.dart';
-import 'package:instagram_login_screen/views/home.dart';
-import 'package:instagram_login_screen/views/notificatitons.dart';
-import 'package:instagram_login_screen/views/profile.dart';
-import 'package:instagram_login_screen/views/reels.dart';
+import 'package:instagram_login_screen/screens/activities_screen.dart';
+import 'package:instagram_login_screen/screens/home/home_screen.dart';
+import 'package:instagram_login_screen/screens/profile_screen.dart';
+import 'package:instagram_login_screen/screens/reels_screen.dart';
+import 'package:instagram_login_screen/screens/search_screen.dart';
 
-import 'utils/app_assets.dart';
+import '../utils/app_assets.dart';
 
 class NewBottomNav extends StatefulWidget {
   const NewBottomNav({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _NewBottomNavState extends State<NewBottomNav> {
     Home(),
     Browse(),
     Reels(),
-    Notificatitons(),
+    Notifications(),
     Profile(),
   ];
 

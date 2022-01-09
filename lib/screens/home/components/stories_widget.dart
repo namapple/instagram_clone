@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_login_screen/models/stories.dart';
+import 'package:instagram_login_screen/models/stories_model.dart';
 import 'package:instagram_login_screen/utils/constants.dart';
 
 class StoriesWidget extends StatelessWidget {
