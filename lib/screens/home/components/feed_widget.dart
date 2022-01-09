@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_login_screen/models/feed.dart';
+import 'package:instagram_login_screen/models/feed_model.dart';
 import 'package:instagram_login_screen/utils/app_assets.dart';
 import 'package:instagram_login_screen/utils/constants.dart';
 

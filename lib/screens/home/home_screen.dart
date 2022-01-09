@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:instagram_login_screen/models/feed.dart';
-import 'package:instagram_login_screen/models/stories.dart';
+import 'package:instagram_login_screen/models/feed_model.dart';
+import 'package:instagram_login_screen/models/stories_model.dart';
+import 'package:instagram_login_screen/screens/home/components/feed_widget.dart';
+import 'package:instagram_login_screen/screens/home/components/stories_widget.dart';
+import 'package:instagram_login_screen/screens/home/components/user_story_widget.dart';
 import 'package:instagram_login_screen/utils/app_assets.dart';
-import 'package:instagram_login_screen/widgets/feed_widget.dart';
-import 'package:instagram_login_screen/widgets/stories_widget.dart';
-import 'package:instagram_login_screen/widgets/user_story_widget.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

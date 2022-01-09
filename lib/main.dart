@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_login_screen/bottom_nav.dart';
+import 'package:instagram_login_screen/screens/bottom_nav.dart';
 
 void main() => runApp(const MyApp());
 
