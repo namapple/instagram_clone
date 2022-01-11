@@ -5,6 +5,7 @@ import 'package:instagram_login_screen/models/stories_model.dart';
 import 'package:instagram_login_screen/screens/home/components/feed_widget.dart';
 import 'package:instagram_login_screen/screens/home/components/stories_widget.dart';
 import 'package:instagram_login_screen/screens/home/components/user_story_widget.dart';
+import 'package:instagram_login_screen/screens/story_screen.dart';
 import 'package:instagram_login_screen/utils/app_assets.dart';
 
 class Home extends StatelessWidget {
@@ -59,7 +60,17 @@ class Home extends StatelessWidget {
                   if (index == 0) {
                     return const UserStoriesWidget();
                   } else {
-                    return StoriesWidget(stories: stories);
+                    return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (context) => StoryPage(
+                                  stories: stories,
+                                ),
+                              ));
+                        },
+                        child: StoriesWidget(stories: stories));
                   }
                 },
               ),
